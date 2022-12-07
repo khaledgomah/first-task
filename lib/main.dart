@@ -1,205 +1,116 @@
+import 'dart:io';
 
-import 'dart:ui';
+import 'dart:math';
 
-import 'package:flutter/material.dart';
-
-void main() {
-  runApp(MaterialApp(
-    theme:ThemeData(fontFamily:'Roboto' ) ,
-    debugShowCheckedModeBanner: false,
-    home: HomePage(),
-  ));
+void main(List<String> args) {
+  // area();
+  // extension();
+  // difference();
+  // prime();
+  //colors();
+  //vowel();
+  //backward();
+  //trim();
+  randomNumber();
 }
 
-class HomePage extends StatefulWidget {
-  @override
-  State<HomePage> createState() => _HomePageState();
+void area() {
+  const double pay = 3.14;
+  print('Enter the radius of a circle');
+  double r = double.parse(stdin.readLineSync()!);
+  double area = r * pay * pay;
+  print('Area = $area');
 }
 
-class _HomePageState extends State<HomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color.fromRGBO(244, 243, 243, 1),
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.menu,
-            color: Colors.black87,
-          ),
-        ),
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            padding: const EdgeInsets.all(20),
-            width: double.infinity,
-            decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.vertical(
-                  bottom: Radius.circular(30),
-                )),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'find your',
-                  style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black87,
-                  ),
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                const Text(
-                  'Inspiration',
-                  style: TextStyle(
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  padding: const EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                    color: const Color.fromRGBO(244, 243, 243, 1),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: const TextField(
-                    // icon:
-                    decoration: InputDecoration(
-                        border: InputBorder.none,
-                        prefixIcon: Icon(Icons.search),
-                        hintText: "search you're looking for",
-                        hintStyle: TextStyle(fontSize: 15, color: Colors.grey)),
-                  ),
-                )
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Promo Today',
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                SizedBox(
-                    height: 200,
-                    child: ListView(
-                      children: [
-                        promoCard('assets/images/one (1).jpg'),
-                        promoCard('assets/images/one (2).jpg'),
-                        promoCard('assets/images/one (3).jpg'),
-                        promoCard('assets/images/one (4).jpg'),
-                        promoCard('assets/images/one (5).jpg'),
-                      ],
-                      scrollDirection: Axis.horizontal,
-                    )),
-                const SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  height: 120,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    image: const DecorationImage(
-                        image: AssetImage('assets/images/one (4).jpg'),
-                        fit: BoxFit.cover),
-                  ),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      gradient: LinearGradient(
-                        begin: Alignment.bottomRight,
-                        stops: const [.2, .9],
-                        colors: [
-                          Colors.black.withOpacity(
-                            .8,
-                          ),
-                          Colors.black.withOpacity(
-                            .2,
-                          ),
-                        ],
-                      ),
-                    ),
-                    child:const Align(
+void extension() {
+  print('Enter the file name');
+  String file = stdin.readLineSync()!;
+  List<String> extension = file.split('.');
+  print(extension[1]);
+}
 
-                      alignment:Alignment.bottomLeft,
-                      child: Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          'best design',
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
+void difference() {
+  const int ref = 23;
+  int res;
+  print('Enter the number');
+  int num = int.parse(stdin.readLineSync()!);
+  if (num > ref) {
+    res = 2 * (num - ref);
+  } else {
+    res = ref - num;
+  }
+  print(res);
+}
+
+void prime() {
+  int x;
+  for (var i = 2; i <= 100; i++) {
+    x = 0;
+    for (var j = i - 1; j >= 2; j--) {
+      if (i % j == 0) {
+        x++;
+      }
+    }
+    if (x == 0) {
+      print('  $i');
+    }
+  }
+}
+
+void colors() {
+  List color = ["Red", "Green", "White", "Black"];
+  print('First color is ${color.first}');
+  print('Last color is ${color.last}');
+}
+
+void vowel() {
+  print('Enter the letter');
+  String letter = stdin.readLineSync()!;
+  letter.toLowerCase();
+  if (letter == 'a' ||
+      letter == 'u' ||
+      letter == 'o' ||
+      letter == 'y' ||
+      letter == 'e') {
+    print('the letter is vowel');
+  } else {
+    print('the letter is not vowel');
+  }
+}
+
+void backward() {
+  print('Enter the a long string containing multiple words');
+  String words = stdin.readLineSync()!;
+  List<String> splited = words.split(' ');
+  Iterable<String> reversed = splited.reversed;
+  print(reversed);
+}
+
+void whiteSpaceRemover() {
+  print('Enter the String');
+  String x = stdin.readLineSync()!;
+  print(x.replaceAll(' ', ''));
+}
+
+void randomNumber() {
+  int? x = generateRandom();
+  int status = 0;
+  if (x == 100) {
+    status = 100;
   }
 
-  Widget promoCard(image) {
-    return AspectRatio(
-      aspectRatio: 2.62 / 3,
-      child: Container(
-        margin: const EdgeInsets.only(right: 15),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          image: DecorationImage(
-            image: AssetImage(
-              image,
-            ),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            gradient: LinearGradient(
-              begin: Alignment.bottomRight,
-              stops: const [.2, .9],
-              colors: [
-                Colors.black.withOpacity(
-                  .8,
-                ),
-                Colors.black.withOpacity(
-                  .1,
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
+  print(status);
+}
+
+int? generateRandom() {
+  Random random = new Random();
+  bool x = random.nextBool();
+  int? returnNum;
+
+  if (x == true) {
+    returnNum = 100;
+  } else {
+    returnNum = null;
   }
+  return returnNum;
 }
